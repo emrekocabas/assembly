@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🎮 Remote Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/remote.css">
+</head>
+
+<body>
+
+    <!-- Connection Screen -->
+    <div id="connect-screen">
+        <h1>🎮 Remote Control</h1>
+        <p class="connect-subtitle">Connecting to Presentation via Firebase...</p>
+
+        <div class="code-input-wrapper" style="display:none;">
+            <input type="text" id="code-input" maxlength="4" inputmode="numeric" pattern="[0-9]*" placeholder="Code">
+        </div>
+
+        <button class="btn-connect" onclick="connect()" id="btn-connect" style="display:none;">Connect 🔗</button>
+        <p id="connect-status">Connecting...</p>
+    </div>
+
+    <!-- Control Screen -->
+    <div id="control-screen" class="hidden">
+
+        <!-- Header -->
+        <div class="remote-header">
+            <div class="slide-name" id="slide-name">🎬 Title</div>
+            <div id="slide-counter">1 / 8</div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-row">
+            <button class="btn-nav prev" id="btn-prev" onclick="prevSlide()">◀ Prev</button>
+            <button class="btn-nav next" id="btn-next" onclick="nextSlide()">Next ▶</button>
+        </div>
+
+        <!-- Action Panel: Reveal (Slides 3, 4, 6) -->
+        <div class="action-panel hidden" id="panel-reveal">
+            <h3>✨ Interactive Element</h3>
+            <button class="btn-reveal" onclick="reveal()">Reveal Next ✨</button>
+        </div>
+
+        <!-- Action Panel: AI Answer (Slide 6) -->
+        <div class="action-panel hidden" id="panel-ai">
+            <h3>🧠 AI Demo</h3>
+            <button class="btn-reveal" onclick="revealAI()">Show Image 🖼️</button>
+            <button class="btn-ai-answer" style="margin-top:10px;" onclick="showAIAnswer()">Show AI Answer 🤖</button>
+        </div>
+
+        <!-- Action Panel: Robot Game (Slide 5) -->
+        <div class="action-panel hidden" id="panel-robot">
+            <h3>🤖 Robot Controls</h3>
+            <div class="dpad">
+                <button class="dpad-btn up" onclick="robotMove('up')">⬆️</button>
+                <button class="dpad-btn left" onclick="robotMove('left')">⬅️</button>
+                <div class="dpad-center">🤖</div>
+                <button class="dpad-btn right" onclick="robotMove('right')">➡️</button>
+                <button class="dpad-btn down" onclick="robotMove('down')">⬇️</button>
+            </div>
+            <button class="btn-reset-robot" onclick="resetRobot()">🔄 Reset Robot</button>
+        </div>
+
+        <!-- Confetti Button (Slide 8) -->
+        <button class="btn-confetti hidden" id="btn-confetti" onclick="confetti()">🎉 Confetti!</button>
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/remote.js"></script>
+</body>
+
+</html>

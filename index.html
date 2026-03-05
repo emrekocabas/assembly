@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talking to Computers! 🖥️</title>
+    <meta name="description" content="Science Week Assembly - Coding & AI for Kids">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/presentation.css">
+</head>
+
+<body>
+
+
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Slide Counter -->
+    <div id="slide-counter">1 / 8</div>
+
+    <!-- ========== SLIDES ========== -->
+    <div id="presentation">
+
+        <!-- SLIDE 1: Title -->
+        <section class="slide active">
+            <div class="slide-content">
+                <div class="emoji-giant animate-bounce">🖥️</div>
+                <h1>Talking to<br>Computers!</h1>
+                <p class="subtitle animate-in">Science Week Assembly 🧪</p>
+                <p class="subtitle animate-in" style="margin-top:12px;">with Emre 👋</p>
+            </div>
+            <div class="floating-emojis">
+                <span>💻</span><span>🤖</span><span>📱</span><span>🧠</span><span>⭐</span>
+            </div>
+            <div id="connection-indicator"></div>
+        </section>
+
+        <!-- SLIDE 2: Who Am I? -->
+        <section class="slide">
+            <div class="slide-content">
+                <h1 class="animate-in">Who Am I? 🤔</h1>
+                <div class="big-text" style="margin-top: 24px;">
+                    <p class="animate-in">👋 Hi! I'm <strong>Emre</strong></p>
+                    <p class="animate-in" style="margin-top:16px;">💻 I'm a <strong>software engineer</strong></p>
+                    <p class="animate-in" style="margin-top:16px;">📱 I build apps and games that
+                        <strong>millions</strong> of people use!</p>
+                    <p class="animate-in" style="margin-top:16px;">🗣️ My job is to <strong>talk to computers</strong> —
+                        and they listen! 😄</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 3: Computers Are Everywhere -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>Computers Are Everywhere! 🌍</h2>
+                <p class="big-text" style="margin-bottom:16px;">Where do we find computers?</p>
+                <div class="reveal-grid">
+                    <div class="reveal-item"><span class="item-emoji">📱</span> Phones</div>
+                    <div class="reveal-item"><span class="item-emoji">🎮</span> Games</div>
+                    <div class="reveal-item"><span class="item-emoji">🚗</span> Cars</div>
+                    <div class="reveal-item"><span class="item-emoji">🏥</span> Hospitals</div>
+                    <div class="reveal-item"><span class="item-emoji">🤖</span> Robots</div>
+                    <div class="reveal-item"><span class="item-emoji">🚀</span> Rockets!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 4: What Is Coding? -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>What Is Coding? 💻</h2>
+                <p class="big-text" style="margin-bottom:20px;">Coding = Giving <strong>Instructions!</strong></p>
+                <p class="big-text" style="margin-bottom:16px; opacity:0.8;">Let's make a sandwich! 🥪</p>
+                <div class="code-steps">
+                    <div class="step reveal-item"><span class="step-num">1</span>🍞 Get two slices of bread</div>
+                    <div class="step reveal-item"><span class="step-num">2</span>🥜 Open the peanut butter jar</div>
+                    <div class="step reveal-item"><span class="step-num">3</span>🔪 Spread peanut butter on bread</div>
+                    <div class="step reveal-item"><span class="step-num">4</span>🍞 Put the other bread on top</div>
+                    <div class="step reveal-item"><span class="step-num">5</span>🎉 Yummy! You made a sandwich!</div>
+                    <div class="step reveal-item oops"><span class="step-num">❌</span>Forget step 3? Yuck! Just bread!
+                        🤢</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 5: Robot Game -->
+        <section class="slide">
+            <div class="slide-content robot-game">
+                <h2>🤖 Help the Robot Find the Star! ⭐</h2>
+                <div id="robot-grid"></div>
+                <p class="robot-instructions">Shout: <strong>UP!</strong> <strong>DOWN!</strong> <strong>LEFT!</strong>
+                    or <strong>RIGHT!</strong></p>
+            </div>
+        </section>
+
+        <!-- SLIDE 6: What Is AI? -->
+        <section class="slide">
+            <div class="slide-content">
+                <h2>What Is AI? 🧠</h2>
+                <p class="big-text" style="margin-bottom:20px;">AI = Teaching computers <strong>how to think!</strong>
+                </p>
+                <div class="ai-demo-items">
+                    <div class="ai-item reveal-item">
+                        <div class="ai-image">🐱</div>
+                        <div class="ai-answer">AI says: <strong>"It's a CAT!"</strong> ✅</div>
+                    </div>
+                    <div class="ai-item reveal-item">
+                        <div class="ai-image">🐶</div>
+                        <div class="ai-answer">AI says: <strong>"It's a DOG!"</strong> ✅</div>
+                    </div>
+                    <div class="ai-item reveal-item">
+                        <div class="ai-image">🦊</div>
+                        <div class="ai-answer">AI says: <strong>"A dog? 🤔 No wait... a FOX!"</strong> 😄</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SLIDE 7: Ada Lovelace -->
+        <section class="slide">
+            <div class="slide-content ada-content">
+                <div class="ada-portrait" id="ada-portrait">
+                    <div
+                        style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;background:rgba(0,0,0,0.1);">
+                        👩‍💻</div>
+                </div>
+                <h2>Ada Lovelace</h2>
+                <p class="big-text">The <strong>FIRST</strong> computer programmer 💪
+                </p>
+                <div class="ada-fact">
+                    🗓️ She wrote the first computer program in <strong>1843</strong> — that's over 180 years ago!<br>
+                    Before computers were even built! 🤯
+                </div>
+                <p class="big-text" style="margin-top:16px;">Happy International Women's Day! 🎉</p>
+            </div>
+        </section>
+
+        <!-- SLIDE 8: Everyone Can Code! -->
+        <section class="slide">
+            <div class="slide-content">
+                <h1 class="animate-in">Everyone Can Code! 🎉</h1>
+                <div class="big-text" style="margin-top:24px;">
+                    <p class="animate-in" style="font-size:1.5em;">👦👧 <strong>YOU</strong> can be a coder!</p>
+                    <p class="animate-in" style="margin-top:20px; font-size:1.5em;">🧪🤖 <strong>YOU</strong> can build
+                        AI!</p>
+                    <p class="animate-in" style="margin-top:20px; font-size:1.5em;">🚀 The future needs
+                        <strong>YOU!</strong>
+                    </p>
+                </div>
+                <p class="animate-in subtitle" style="margin-top:40px;">Any questions? 🙋</p>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/presentation.js"></script>
+</body>
+
+</html>

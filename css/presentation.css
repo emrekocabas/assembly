@@ -1,0 +1,630 @@
+/* ============ DESIGN SYSTEM ============ */
+:root {
+    --font-display: 'Fredoka One', cursive;
+    --font-body: 'Nunito', sans-serif;
+    --transition-slide: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: var(--font-body);
+    background: #1a1a2e;
+}
+
+/* ============ SLIDE CONTAINER ============ */
+#presentation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.92);
+    transition: opacity var(--transition-slide), transform var(--transition-slide), visibility 0s linear var(--transition-slide);
+    pointer-events: none;
+    padding: 40px;
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    pointer-events: auto;
+    transition-delay: 0s;
+    z-index: 2;
+}
+
+.slide-content {
+    max-width: 1200px;
+    width: 100%;
+    z-index: 2;
+}
+
+/* ============ SLIDE BACKGROUNDS ============ */
+.slide:nth-child(1) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.slide:nth-child(2) {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.slide:nth-child(3) {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.slide:nth-child(4) {
+    background: linear-gradient(135deg, #fc5c7d 0%, #fcb045 100%);
+}
+
+.slide:nth-child(5) {
+    background: linear-gradient(135deg, #4834d4 0%, #686de0 50%, #be2edd 100%);
+}
+
+.slide:nth-child(6) {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.slide:nth-child(7) {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #1a1a2e;
+}
+
+.slide:nth-child(7) h2,
+.slide:nth-child(7) p {
+    text-shadow: none;
+}
+
+.slide:nth-child(8) {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #d4fc79 100%);
+}
+
+/* ============ TYPOGRAPHY ============ */
+h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 6rem);
+    text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 24px;
+}
+
+.subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.big-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.emoji-giant {
+    font-size: clamp(4rem, 10vw, 8rem);
+    display: block;
+    margin-bottom: 16px;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    75% {
+        transform: translateY(10px) rotate(-3deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes wiggle {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes robotWalk {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(-1);
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes celebratePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(255, 215, 0, 0);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+    }
+}
+
+.animate-bounce {
+    animation: bounce 2s ease infinite;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+/* Staggered entrance animations */
+.animate-in {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.slide.active .animate-in {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.slide.active .animate-in:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.slide.active .animate-in:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.slide.active .animate-in:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.slide.active .animate-in:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.slide.active .animate-in:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
+/* ============ FLOATING EMOJIS (Title Slide) ============ */
+.floating-emojis {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-emojis span {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.floating-emojis span:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.floating-emojis span:nth-child(2) {
+    top: 20%;
+    right: 8%;
+    animation-delay: 1s;
+}
+
+.floating-emojis span:nth-child(3) {
+    bottom: 15%;
+    left: 12%;
+    animation-delay: 2s;
+}
+
+.floating-emojis span:nth-child(4) {
+    bottom: 25%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.floating-emojis span:nth-child(5) {
+    top: 50%;
+    left: 50%;
+    animation-delay: 1.5s;
+}
+
+/* ============ REVEAL ITEMS (Slide 3 & 6) ============ */
+.reveal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.reveal-item {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px 32px;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 800;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.reveal-item.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.reveal-item .item-emoji {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ============ CODE STEPS (Slide 4) ============ */
+.code-steps {
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.step {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin-bottom: 12px;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border-left: 5px solid rgba(255, 255, 255, 0.4);
+}
+
+.step.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.step.oops {
+    border-left-color: #ff4444;
+    background: rgba(255, 0, 0, 0.2);
+}
+
+.step-num {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* ============ ROBOT GAME (Slide 5) ============ */
+.robot-game {
+    width: 100%;
+}
+
+#robot-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    max-width: min(500px, 70vh);
+    margin: 20px auto;
+    aspect-ratio: 1;
+}
+
+.grid-cell {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.grid-cell.target {
+    background: rgba(255, 215, 0, 0.2);
+}
+
+.grid-cell .robot {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    transition: all 0.3s ease;
+}
+
+#robot-grid.celebrating {
+    animation: celebratePulse 0.5s ease infinite;
+}
+
+#robot-grid.celebrating .grid-cell {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+.robot-instructions {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    margin-top: 16px;
+    opacity: 0.9;
+}
+
+/* ============ AI DEMO (Slide 6) ============ */
+.ai-demo-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ai-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 16px 24px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ai-item.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.ai-image {
+    font-size: 3.5rem;
+    flex-shrink: 0;
+}
+
+.ai-answer {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 700;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.3s;
+}
+
+.ai-item.answered .ai-answer {
+    opacity: 1;
+}
+
+/* ============ ADA LOVELACE (Slide 7) ============ */
+.ada-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.ada-portrait {
+    width: clamp(120px, 20vw, 200px);
+    height: clamp(120px, 20vw, 200px);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.ada-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ada-fact {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    padding: 20px 32px;
+    font-size: clamp(1rem, 2.2vw, 1.4rem);
+    font-weight: 700;
+    max-width: 700px;
+}
+
+/* ============ CONNECTION INDICATOR ============ */
+#connection-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #555;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+#connection-indicator.connected {
+    background-color: #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+    border-color: #fff;
+}
+
+/* ============ CONFETTI ============ */
+#confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+}
+
+/* ============ SLIDE COUNTER ============ */
+#slide-counter {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    z-index: 10;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+    .slide {
+        padding: 20px;
+    }
+
+    .reveal-grid {
+        gap: 10px;
+    }
+
+    .reveal-item {
+        padding: 12px 20px;
+    }
+
+    .step {
+        padding: 12px 16px;
+    }
+
+    #robot-grid {
+        max-width: 85vw;
+    }
+}
