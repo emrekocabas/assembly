@@ -67,8 +67,8 @@ function send(data) {
     vibrate();
 }
 
-function nextSlide() { send({ type: 'next' }); }
-function prevSlide() { send({ type: 'prev' }); }
+function nextSlide() { send({ type: 'goto', slide: Math.min(currentSlide + 1, totalSlides - 1) }); }
+function prevSlide() { send({ type: 'goto', slide: Math.max(currentSlide - 1, 0) }); }
 function reveal() { send({ type: 'reveal' }); }
 function revealAI() { send({ type: 'revealAI' }); }
 function showAIAnswer() { send({ type: 'showAIAnswer' }); }

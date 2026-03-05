@@ -45,7 +45,23 @@ document.addEventListener('DOMContentLoaded', () => {
 let lastCommandTimestamp = Date.now();
 
 function initFirebase() {
-    sendState();
+    // Read initial state or set it if none exists
+    db.ref('presentation/state').once('value').then((snapshot) => {
+        const data = snapshot.val();
+        if (data && data.currentSlide !== undefined) {
+            goToSlide(data.currentSlide, true);
+        } else {
+            sendState();
+        }
+    });
+
+    // Listen for state changes to stay in sync with other tabs
+    db.ref('presentation/state').on('value', (snapshot) => {
+        const data = snapshot.val();
+        if (data && data.currentSlide !== undefined && data.currentSlide !== currentSlide) {
+            goToSlide(data.currentSlide, true);
+        }
+    });
 
     // Listen for commands from the remote control
     db.ref('presentation/command').on('value', (snapshot) => {
@@ -94,16 +110,20 @@ function sendState() {
 }
 
 // ============ SLIDE NAVIGATION ============
-function goToSlide(n) {
+function goToSlide(n, fromSync = false) {
     if (n < 0 || n >= TOTAL_SLIDES || n === currentSlide) return;
 
     const slides = document.querySelectorAll('.slide');
-    slides[currentSlide].classList.remove('active');
+    if (slides[currentSlide]) {
+        slides[currentSlide].classList.remove('active');
+    }
     currentSlide = n;
-    slides[currentSlide].classList.add('active');
+    if (slides[currentSlide]) {
+        slides[currentSlide].classList.add('active');
+        // Reset entrance animations
+        resetAnimations(slides[currentSlide]);
+    }
 
-    // Reset entrance animations
-    resetAnimations(slides[currentSlide]);
     updateSlideCounter();
 
     // Auto-confetti on final slide
@@ -111,7 +131,9 @@ function goToSlide(n) {
         setTimeout(triggerConfetti, 600);
     }
 
-    sendState();
+    if (!fromSync) {
+        sendState();
+    }
 }
 
 function nextSlide() { goToSlide(currentSlide + 1); }
