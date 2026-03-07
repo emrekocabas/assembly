@@ -156,6 +156,25 @@ body {
     margin-top: 4px;
 }
 
+.btn-reset-all {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: transform 0.15s, color 0.15s;
+    padding: 8px;
+}
+
+.btn-reset-all:active {
+    transform: translateY(-50%) scale(0.85);
+    color: var(--accent);
+}
+
 /* ============ NAVIGATION ============ */
 .nav-row {
     display: flex;

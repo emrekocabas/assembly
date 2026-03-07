@@ -75,6 +75,11 @@ function showAIAnswer() { send({ type: 'showAIAnswer' }); }
 function robotMove(dir) { send({ type: 'robot', direction: dir }); }
 function confetti() { send({ type: 'confetti' }); }
 function resetRobot() { send({ type: 'reset-robot' }); }
+function resetAll() {
+    if (confirm("Tüm sunumu en başa döndürmek istediğinize emin misiniz?")) {
+        send({ type: 'reset-all' });
+    }
+}
 
 // ============ UI UPDATES ============
 function updateUI() {

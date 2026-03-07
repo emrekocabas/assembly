@@ -95,6 +95,7 @@ function handleRemoteData(data) {
         case 'robot': moveRobot(data.direction); break;
         case 'confetti': triggerConfetti(); break;
         case 'reset-robot': resetRobot(); break;
+        case 'reset-all': resetAll(); break;
     }
 }
 
@@ -265,6 +266,25 @@ function celebrateRobot() {
     if (cells[idx]) {
         cells[idx].innerHTML = '<span class="robot" style="font-size:inherit">🤖</span>🎉';
     }
+}
+
+function resetAll() {
+    // Reveal state reset
+    revealCounters = {};
+    aiRevealIndex = 0;
+    document.querySelectorAll('.reveal-item, .ai-item').forEach(el => {
+        el.classList.remove('visible', 'answered');
+    });
+
+    // Robot game reset
+    robotX = 0;
+    robotY = 1;
+    const grid = document.getElementById('robot-grid');
+    if (grid) grid.classList.remove('celebrating');
+    generateRobotGrid();
+
+    // Go to first slide, which will sendState over firebase
+    goToSlide(0);
 }
 
 // ============ CONFETTI ============
