@@ -351,21 +351,3 @@ body {
 .btn-confetti.hidden {
     display: none;
 }
-
-/* ============ AI ANSWER BUTTON ============ */
-.btn-ai-answer {
-    width: 100%;
-    background: linear-gradient(135deg, #f093fb, #f5576c);
-    color: #fff;
-    border: none;
-    border-radius: var(--radius);
-    padding: 20px;
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    cursor: pointer;
-    transition: transform 0.15s;
-}
-
-.btn-ai-answer:active {
-    transform: scale(0.93);
-}

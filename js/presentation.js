@@ -1,5 +1,5 @@
 // ============ CONFIGURATION ============
-const TOTAL_SLIDES = 8;
+const TOTAL_SLIDES = 7;
 const PEER_PREFIX = 'science-show-';
 const GRID_SIZE = 5;
 
@@ -21,7 +21,6 @@ const slideNames = [
     '🖥️ Computers Everywhere',
     '💻 What Is Coding?',
     '🤖 Robot Game',
-    '🧠 What Is AI?',
     '👩‍💻 Ada Lovelace',
     '🎉 Everyone Can Code!'
 ];
@@ -90,8 +89,6 @@ function handleRemoteData(data) {
         case 'prev': prevSlide(); break;
         case 'goto': goToSlide(data.slide); break;
         case 'reveal': revealNext(); break;
-        case 'revealAI': revealNextAI(); break;
-        case 'showAIAnswer': showAIAnswer(); break;
         case 'robot': moveRobot(data.direction); break;
         case 'confetti': triggerConfetti(); break;
         case 'reset-robot': resetRobot(); break;
@@ -166,27 +163,6 @@ function revealNext() {
     if (idx < items.length) {
         items[idx].classList.add('visible');
         revealCounters[currentSlide]++;
-    }
-    sendState();
-}
-
-// AI-specific reveal (show image first, then answer)
-let aiRevealIndex = 0;
-function revealNextAI() {
-    const slide = document.querySelectorAll('.slide')[5]; // Slide 6 (index 5)
-    const items = slide.querySelectorAll('.ai-item');
-    if (aiRevealIndex < items.length) {
-        items[aiRevealIndex].classList.add('visible');
-        aiRevealIndex++;
-    }
-    sendState();
-}
-
-function showAIAnswer() {
-    const slide = document.querySelectorAll('.slide')[5];
-    const items = slide.querySelectorAll('.ai-item.visible:not(.answered)');
-    if (items.length > 0) {
-        items[0].classList.add('answered');
     }
     sendState();
 }
@@ -271,9 +247,8 @@ function celebrateRobot() {
 function resetAll() {
     // Reveal state reset
     revealCounters = {};
-    aiRevealIndex = 0;
-    document.querySelectorAll('.reveal-item, .ai-item').forEach(el => {
-        el.classList.remove('visible', 'answered');
+    document.querySelectorAll('.reveal-item').forEach(el => {
+        el.classList.remove('visible');
     });
 
     // Robot game reset
@@ -336,13 +311,11 @@ function setupKeyboard() {
             case 'ArrowUp':
                 e.preventDefault();
                 if (currentSlide === 4) moveRobot('up');
-                else if (currentSlide === 5) { revealNextAI(); }
                 else revealNext();
                 break;
             case 'ArrowDown':
                 e.preventDefault();
                 if (currentSlide === 4) moveRobot('down');
-                else if (currentSlide === 5) { showAIAnswer(); }
                 break;
             case 'a':
                 if (currentSlide === 4) moveRobot('left');

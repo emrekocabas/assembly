@@ -3,10 +3,10 @@ const PEER_PREFIX = 'science-show-';
 let peer = null;
 let conn = null;
 let currentSlide = 0;
-let totalSlides = 8;
+let totalSlides = 7;
 let slideNames = [
     '🎬 Title', '👋 Who Am I?', '🖥️ Computers',
-    '💻 Coding', '🤖 Robot Game', '🧠 AI',
+    '💻 Coding', '🤖 Robot Game',
     '👩‍💻 Ada Lovelace', '🎉 Finale'
 ];
 
@@ -20,7 +20,7 @@ function connect() {
             const data = snapshot.val();
             if (data) {
                 currentSlide = data.currentSlide || 0;
-                totalSlides = data.totalSlides || 8;
+                totalSlides = data.totalSlides || 7;
                 if (data.slideNames) slideNames = data.slideNames;
                 updateUI();
 
@@ -70,8 +70,6 @@ function send(data) {
 function nextSlide() { send({ type: 'goto', slide: Math.min(currentSlide + 1, totalSlides - 1) }); }
 function prevSlide() { send({ type: 'goto', slide: Math.max(currentSlide - 1, 0) }); }
 function reveal() { send({ type: 'reveal' }); }
-function revealAI() { send({ type: 'revealAI' }); }
-function showAIAnswer() { send({ type: 'showAIAnswer' }); }
 function robotMove(dir) { send({ type: 'robot', direction: dir }); }
 function confetti() { send({ type: 'confetti' }); }
 function resetRobot() { send({ type: 'reset-robot' }); }
@@ -108,9 +106,6 @@ function updateUI() {
             break;
         case 4: // Robot game
             document.getElementById('panel-robot').classList.remove('hidden');
-            break;
-        case 5: // AI demo
-            document.getElementById('panel-ai').classList.remove('hidden');
             break;
     }
 
