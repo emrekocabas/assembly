@@ -48,10 +48,12 @@ function initFirebase() {
     db.ref('presentation/state').once('value').then((snapshot) => {
         const data = snapshot.val();
         if (data && data.currentSlide !== undefined) {
-            goToSlide(data.currentSlide, true);
-        } else {
-            sendState();
+            // Force current slide within bounds if total slides shrunk
+            currentSlide = Math.min(data.currentSlide, TOTAL_SLIDES - 1);
+            goToSlide(currentSlide, true);
         }
+        // Always overwite Firebase with current app's configuration
+        sendState();
     });
 
     // Listen for state changes to stay in sync with other tabs
