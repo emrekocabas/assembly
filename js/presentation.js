@@ -263,6 +263,11 @@ function celebrateRobot() {
     if (cells[idx]) {
         cells[idx].innerHTML = '<span class="robot" style="font-size:inherit">🤖</span>🎉';
     }
+
+    // Auto advance after 2 seconds
+    setTimeout(() => {
+        nextSlide();
+    }, 2000);
 }
 
 function resetAll() {
