@@ -139,6 +139,25 @@ function goToSlide(n, fromSync = false) {
 function nextSlide() { goToSlide(currentSlide + 1); }
 function prevSlide() { goToSlide(currentSlide - 1); }
 
+// Advance presentation smartly through interactive reveals
+function advancePresentation() {
+    const slide = document.querySelectorAll('.slide')[currentSlide];
+    const items = slide.querySelectorAll('.reveal-item');
+
+    // If we have items and haven't revealed all of them
+    if (items.length > 0) {
+        if (!revealCounters[currentSlide]) revealCounters[currentSlide] = 0;
+
+        if (revealCounters[currentSlide] < items.length) {
+            revealNext();
+            return;
+        }
+    }
+
+    // Default fallback line to go to next slide if no reveals
+    nextSlide();
+}
+
 function resetAnimations(slide) {
     const items = slide.querySelectorAll('.animate-in');
     items.forEach(el => {
@@ -296,7 +315,7 @@ function setupKeyboard() {
             case 'ArrowRight':
             case ' ':
                 e.preventDefault();
-                nextSlide();
+                advancePresentation();
                 break;
             case 'ArrowLeft':
                 e.preventDefault();
