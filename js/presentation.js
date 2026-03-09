@@ -216,10 +216,26 @@ function moveRobot(direction) {
     const prev = { x: robotX, y: robotY };
 
     switch (direction) {
-        case 'up': robotY = Math.max(0, robotY - 1); break;
-        case 'down': robotY = Math.min(GRID_SIZE - 1, robotY + 1); break;
-        case 'left': robotX = Math.max(0, robotX - 1); break;
-        case 'right': robotX = Math.min(GRID_SIZE - 1, robotX + 1); break;
+        case 'up':
+            robotY = Math.max(0, robotY - 1);
+            break;
+        case 'down':
+            robotY = Math.min(GRID_SIZE - 1, robotY + 1);
+            break;
+        case 'left':
+            if (robotX === 0) {
+                prevSlide();
+                return;
+            }
+            robotX = Math.max(0, robotX - 1);
+            break;
+        case 'right':
+            if (robotX === GRID_SIZE - 1) {
+                nextSlide();
+                return;
+            }
+            robotX = Math.min(GRID_SIZE - 1, robotX + 1);
+            break;
     }
 
     updateRobotPosition();
