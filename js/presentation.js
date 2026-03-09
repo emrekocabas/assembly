@@ -317,23 +317,6 @@ function triggerConfetti() {
 function setupKeyboard() {
     document.addEventListener('keydown', (e) => {
         switch (e.key) {
-            case 'ArrowRight':
-            case ' ':
-                e.preventDefault();
-                advancePresentation();
-                break;
-            case 'ArrowLeft':
-                e.preventDefault();
-                prevSlide();
-                break;
-            case 'r':
-            case 'R':
-                revealNext();
-                break;
-            case 'c':
-            case 'C':
-                triggerConfetti();
-                break;
             case 'ArrowUp':
                 e.preventDefault();
                 if (currentSlide === 4) moveRobot('up');
@@ -343,11 +326,27 @@ function setupKeyboard() {
                 e.preventDefault();
                 if (currentSlide === 4) moveRobot('down');
                 break;
-            case 'a':
+            case 'ArrowLeft':
+                e.preventDefault();
                 if (currentSlide === 4) moveRobot('left');
+                else prevSlide();
                 break;
-            case 'd':
+            case 'ArrowRight':
+                e.preventDefault();
                 if (currentSlide === 4) moveRobot('right');
+                else advancePresentation();
+                break;
+            case ' ':
+                e.preventDefault();
+                if (currentSlide !== 4) advancePresentation();
+                break;
+            case 'r':
+            case 'R':
+                if (currentSlide !== 4) revealNext();
+                break;
+            case 'c':
+            case 'C':
+                triggerConfetti();
                 break;
         }
     });
